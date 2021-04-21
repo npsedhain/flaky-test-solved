@@ -22,7 +22,8 @@ describe('Sign Up', () => {
     cy.get('input[type="submit"]')
       .click()
 
-    cy.get('li')
+    // the submission resolves between 3500-4500 ms, hence the increase to the default timeout does the job
+    cy.get('li', { timeout: 4600 })
       .should('contain', 'Some Name - some@email.com - core - git-it')
   })
 })
